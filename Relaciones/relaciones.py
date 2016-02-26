@@ -25,6 +25,9 @@ class relacion:
     def __str__(self):
         return str(self.rels)
 
+    def __call__(self, a, b):
+        return self.rel(a,b)
+
     def es_reflexiva(self):
         return all((a,a) in self.rels for a in self.universo)
 
@@ -213,7 +216,7 @@ class relacion:
 
     def es_Algebra_Boole(self):
         return self.es_distributivo() and self.es_complementado()
-        
+
     def atomos(self):
         try:
             cero = self.cero
