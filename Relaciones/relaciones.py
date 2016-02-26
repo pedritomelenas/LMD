@@ -38,7 +38,7 @@ class relacion:
         return all((t[0],s[1]) in self.rels for t in self.rels for s in self.rels if t[1]==s[0])
 
     def es_antisimetrica(self):
-        return all((t[0],t[0]) in self.rels for t in self.rels if (t[1],t[0]) in self.rels)
+        return all(t[0]==t[1] for t in self.rels if (t[1],t[0]) in self.rels)
 
     def es_total(self):
         return all((((a,b) in self.rels) or ((b,a) in self.rels)) for a in self.universo for b in self.universo if a!=b)
