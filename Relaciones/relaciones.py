@@ -364,3 +364,10 @@ def identidad(l):
 
     ll = set((a,a) for a in l)
     return relacion(ll)
+
+def divisores(n):
+    """
+    Define el conjunto de divisores de n con la relación de divisibilidad
+    """
+    u = set(a for a in range(1,n+1) if n%a==0)
+    return relacion(set((a,b) for a in u for b in u if b%a==0),u)
