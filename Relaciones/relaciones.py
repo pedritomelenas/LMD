@@ -367,7 +367,14 @@ def identidad(l):
 
 def divisores(n):
     """
-    Define el conjunto de divisores de n con la relación de divisibilidad
+    Define el conjunto de divisores de n con la relación de divisibilidad, si n es un entero
+    En caso de que n sea un conjunto enteros, hace lo mismo pero con los elementos de n
     """
-    u = set(a for a in range(1,n+1) if n%a==0)
-    return relacion(set((a,b) for a in u for b in u if b%a==0),u)
+    if isinstance(n,int) and n>0:
+        u = set(a for a in range(1,n+1) if n%a==0)
+        return relacion(set((a,b) for a in u for b in u if b%a==0),u)
+    if isinstance(n,set) and all(isinstance(x,int) for x in n):
+        u = n.copy()
+        return relacion(set((a,b) for a in u for b in u if b==0 or (a!=0 and b%a==0)))
+
+    raise TypeError("El argumento debe ser un entero positivo o bien un conjunto de enteros")
