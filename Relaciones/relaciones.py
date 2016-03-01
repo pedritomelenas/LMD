@@ -126,6 +126,7 @@ class relacion:
         Dibuja los elementos del universo y las relaciones entre éstos
         """
         g=gv.Digraph(format='svg')
+        g.attr('graph', rankdir='BT')
         if l!=None:
             if not(l<=self.universo):
                 raise ValueError("Los nodos seleccionados no están en el universo de la relación")
