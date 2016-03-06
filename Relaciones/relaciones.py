@@ -318,7 +318,7 @@ class relacion:
         #    return False # no es necesaria, basta una de las distributivas
         return True
 
-    def es_Algebra_Boole(self):
+    def es_algebra_Boole(self):
         """
         Decide si el conjunto con las operaciones supremo e ínfimo es un Álgebra de Boole
         """
@@ -355,6 +355,27 @@ class relacion:
         un = self.universo.copy()
         un.remove(uno)
         return self.maximales(un)
+
+    def es_subreticulo(self,l):
+        """
+        Determina si los elementos del conjunto l son un subretículo
+        """
+        if not(self.es_reticulo()):
+            raise ValueError("El conjunto con la relación dada no es un retículo")
+        return all(self.supremo({a,b}) in l for a in l for b in l) and all(self.infimo({a,b}) in l for a in l for b in l)
+
+    def es_subalgebra(self,l):
+        """
+        Determina si los elementos del conjunto l son un subálgebra de Boole
+        """
+        if not(self.es_algebra_Boole()):
+            raise ValueError("El conjunto con la relación dada no es un álgebra de Boole")
+
+        if not(self.es_subreticulo(l)):
+            return False
+        if not(self.cero in l and self.uno in l):
+            return False
+        return all(self.complemento(a) in l for a in l)
 
 def identidad(l):
     """
