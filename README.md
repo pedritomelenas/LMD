@@ -3,4 +3,4 @@
 
 Material para las prácticas de la asignatura Lógica y Métodos Discretos
 
-Para informacin de cómo instalar los paquetes, véase la wiki
+Para información de cómo instalar los paquetes, véase la wiki
